@@ -46,7 +46,7 @@ def index
 
  private
    def task_list_params
-     params.require(:task_list).permit(:name, :user_id, :team_id, :public)
+     params.require(:task_list).permit(:name, :user_id, :team_id)
    end
 
 end

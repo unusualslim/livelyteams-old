@@ -6,9 +6,20 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.nav a:visited { 
+.nav-link { 
   color: #fff;
 }
-.nav a:hover {
+.nav-link {
   color: #505050;
+}
+
+a.btn:visited {
+  color: #fff;
+}
+.glyphicon {
+font-size: 2em;
+text-align: center;
+}
+.top-nav {
+  background-color: #000;
 }

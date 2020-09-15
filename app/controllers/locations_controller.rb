@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   def index
-    @locations = Location.order(:short_name).all
+    @locations = current_team.locations.order(:short_name).all
   end
  
   def show
@@ -45,7 +45,7 @@ class LocationsController < ApplicationController
  
   private
     def location_params
-      params.require(:location).permit(:name, :short_name)
+      params.require(:location).permit(:name, :short_name, :team_id)
     end
 
 end

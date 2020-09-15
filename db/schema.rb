@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_27_211809) do
+ActiveRecord::Schema.define(version: 2020_04_30_144956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,12 +68,16 @@ ActiveRecord::Schema.define(version: 2020_04_27_211809) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "team_id"
+    t.index ["team_id"], name: "index_locations_on_team_id"
   end
 
   create_table "manufacturers", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "team_id"
+    t.index ["team_id"], name: "index_manufacturers_on_team_id"
   end
 
   create_table "notes", force: :cascade do |t|
@@ -82,7 +86,6 @@ ActiveRecord::Schema.define(version: 2020_04_27_211809) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.boolean "public"
     t.bigint "team_id"
     t.index ["team_id"], name: "index_notes_on_team_id"
     t.index ["user_id"], name: "index_notes_on_user_id"
@@ -121,6 +124,8 @@ ActiveRecord::Schema.define(version: 2020_04_27_211809) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "team_id"
+    t.index ["team_id"], name: "index_tags_on_team_id"
   end
 
   create_table "task_lists", force: :cascade do |t|
@@ -128,7 +133,6 @@ ActiveRecord::Schema.define(version: 2020_04_27_211809) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.boolean "public"
     t.bigint "team_id"
     t.index ["team_id"], name: "index_task_lists_on_team_id"
     t.index ["user_id"], name: "index_task_lists_on_user_id"
@@ -211,10 +215,13 @@ ActiveRecord::Schema.define(version: 2020_04_27_211809) do
   add_foreign_key "comments", "tasks"
   add_foreign_key "comments", "users"
   add_foreign_key "equipment", "manufacturers"
+  add_foreign_key "locations", "teams"
+  add_foreign_key "manufacturers", "teams"
   add_foreign_key "notes", "teams"
   add_foreign_key "notes", "users"
   add_foreign_key "taggings", "assets"
   add_foreign_key "taggings", "tags"
+  add_foreign_key "tags", "teams"
   add_foreign_key "task_lists", "teams"
   add_foreign_key "task_lists", "users"
   add_foreign_key "task_locations", "locations"
