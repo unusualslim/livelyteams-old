@@ -40,14 +40,6 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   #SMTP Server settings
-  config.action_mailer.smtp_settings = {
-	:address =>			'smtp.mailgun.org',
-	:port =>			587,
-	:domain =>			'mg.printrdwn.com',
-	:user_name =>			'postmaster@mg.printrdwn.com',
-	:password =>			'2b4878c4346249fcff9e82fae35c0f28-4167c382-d03e2e71',
-	:authentication =>		'plain'	
-  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
